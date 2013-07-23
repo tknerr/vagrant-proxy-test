@@ -6,7 +6,6 @@ if [ -z "$PROXY" ]; then
 fi
 
 # set proxy in /etc/profile.d
-echo "setting proxy to inside the Vagrant VM to '$PROXY'"
 cat <<EOF | sudo tee /etc/profile.d/proxy.sh
 export HTTP_PROXY=$PROXY
 export HTTPS_PROXY=$PROXY
