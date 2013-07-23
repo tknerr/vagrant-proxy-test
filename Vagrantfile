@@ -12,7 +12,6 @@ Vagrant.configure('2') do |config|
   end
 
   # install omnibus via shell provisioner because vagrant-omnibus does not work behind a proxy yet
-  config.vm.provision :shell, :inline => "cat /tmp/foo.sh | sudo -E bash -s -- 'from_vagrantfile'"
-  #config.vm.provision :shell, :inline => "wget -qO- https://www.opscode.com/chef/install.sh | sudo -E bash -s -- -v 11.4.4-2"
+  config.vm.provision :shell, :path => 'install_chef.sh', :args => '11.4.4'
 
 end
