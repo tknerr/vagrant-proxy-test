@@ -5,6 +5,14 @@ if [ -z "$PROXY" ]; then
   exit 1
 fi
 
+# unset proxy if set to NONE>
+if [ "$PROXY" == "NONE" ]; then
+  echo "Not using a Proxy"
+  sudo rm -f /etc/profile.d/proxy.sh
+  sudo rm -f /etc/apt/apt.conf
+  exit 0
+fi
+
 # set proxy in /etc/profile.d
 cat <<EOF | sudo tee /etc/profile.d/proxy.sh
 export HTTP_PROXY=$PROXY
