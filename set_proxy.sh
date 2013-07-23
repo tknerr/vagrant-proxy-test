@@ -18,11 +18,3 @@ cat <<EOF | sudo tee /etc/apt/apt.conf
 Acquire { Retries "0"; HTTP { Proxy "$PROXY"; }; };
 Acquire { Retries "0"; HTTPS { Proxy "$PROXY"; }; };
 EOF
-
-# source proxy settings and print them
-source /etc/profile.d/proxy.sh
-echo "HTTP_PROXY is $HTTP_PROXY"
-echo "HTTPS_PROXY is $HTTPS_PROXY"
-echo "NO_PROXY is $NO_PROXY"
-
-
