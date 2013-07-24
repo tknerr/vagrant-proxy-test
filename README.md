@@ -32,7 +32,9 @@ $ export VAGRANT_HTTP_PROXY=http://my.proxy.org:8080
 
 The `Vagrantfile` in this test project will pick up this env var and - depending on whether it is set or not - set/unset the proxy *inside* the Vagrant VM via a shell provisioner.
 
-Considerations:
+Considerations
+==============
+
 * [vagrant-omnibus](https://github.com/schisamo/vagrant-omnibus) does not support proxy configuration [yet](https://github.com/schisamo/vagrant-omnibus/pull/25)
 * even if we set the proxy variables via a separate shell provisionier the vagrant-omnibus plugin does not work because it kicks in before *any* of the provisioniers run
 
