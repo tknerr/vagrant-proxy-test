@@ -10,7 +10,7 @@ Setting Proxy on the Host
 
 This is required if your host (i.e. the machnine hosting your Vagrant VMs) is behind a Tools.
 
-Tools like [git](http://git-scm.org/), [vagrant-berkshelf](https://github.com/riotgames/vagrant-berkshelf) or [vundler](https://github.com/fgrehm/vundler) require the proxy to be configured correctly when you run `vagrant up`.
+Tools like [git](http://git-scm.org/), [vagrant-berkshelf](https://github.com/riotgames/vagrant-berkshelf) or [bindler](https://github.com/fgrehm/bindler) require the proxy to be configured correctly when you run `vagrant up`.
 
 This is as simple as setting both the `HTTP_PROXY` and `HTTPS_PROXY` env vars on the host:
 ```
@@ -37,5 +37,6 @@ Considerations
 
 * [vagrant-omnibus](https://github.com/schisamo/vagrant-omnibus) does not support proxy configuration [yet](https://github.com/schisamo/vagrant-omnibus/pull/25)
 * even if we set the proxy variables via a separate shell provisionier the vagrant-omnibus plugin does not work because it kicks in before *any* of the provisioniers run
+* this will probably get much easier with [vagrant-proxyconf](https://github.com/tmatilai/vagrant-proxyconf/), once [#6](https://github.com/tmatilai/vagrant-proxyconf/pull/6) and [#13](https://github.com/tmatilai/vagrant-proxyconf/issues/13) are resolved
 
 
