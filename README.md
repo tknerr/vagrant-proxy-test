@@ -25,18 +25,13 @@ Another story is configuring a proxy on the Vagrant VM.
 
 For example, your laptop (i.e. host) is running inside your corporate network which requires you to configure a proxy, but the Vagrant VM might be running in the AWS Cloud via the [vagrant-aws](https://github.com/mitchellh/vagrant-aws) provider and thus not require a proxy. On the other hand it might be running locally using the default virtualbox provider and then you need the same proxy settings.  
 
-To configure the Vagrant VM for using a proxy set the `VAGRANT_HTTP_PROXY` env var on the host:
+To configure the Vagrant VM for using a proxy via [vagrant-proxyconf](https://github.com/tmatilai/vagrant-proxyconf/) set the `VAGRANT_ENV_HTTP_PROXY` env vars on the host:
 ```
-$ export VAGRANT_HTTP_PROXY=http://my.proxy.org:8080
+$ export VAGRANT_ENV_HTTP_PROXY=http://my.proxy.org:8080
+$ export VAGRANT_ENV_HTTPS_PROXY=http://my.proxy.org:8080
 ```
 
-The `Vagrantfile` in this test project will pick up this env var and - depending on whether it is set or not - set/unset the proxy *inside* the Vagrant VM via a shell provisioner.
+The [vagrant-proxyconf](https://github.com/tmatilai/vagrant-proxyconf/) plugin will pick up this env var and - depending on whether it is set or not - set/unset the proxy *inside* the Vagrant VM via before provisioning.
 
-Considerations
-==============
-
-* [vagrant-omnibus](https://github.com/schisamo/vagrant-omnibus) does not support proxy configuration [yet](https://github.com/schisamo/vagrant-omnibus/pull/25)
-* even if we set the proxy variables via a separate shell provisionier the vagrant-omnibus plugin does not work because it kicks in before *any* of the provisioniers run
-* this will probably get much easier with [vagrant-proxyconf](https://github.com/tmatilai/vagrant-proxyconf/), once [#6](https://github.com/tmatilai/vagrant-proxyconf/pull/6) and [#13](https://github.com/tmatilai/vagrant-proxyconf/issues/13) are resolved
 
 
